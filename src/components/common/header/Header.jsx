@@ -1,11 +1,14 @@
-// Header.js
+// Header.jsx
 import React, { useState } from 'react';
 import { nav } from '../../data/Data';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../auth/AuthContext'; // Importez useAuth depuis AuthContext
 import './header.css';
 
-
 const Header = () => {
+  const { authState, signOut } = useAuth(); 
+  console.log('authState:', authState);// Utilisez useAuth pour accéder à l'état d'authentification
+
   const [navList, setNavList] = useState(false);
 
   return (
@@ -21,12 +24,20 @@ const Header = () => {
                 <Link to={list.path}>{list.text}</Link>
               </li>
             ))}
-            <li>
-              <Link to='/login'>Connexion</Link>
-            </li>
-            <li>
-              <Link to='/register'>Inscription</Link>
-            </li>
+            {authState ? (
+              <li>
+                <button onClick={signOut}>Déconnexion</button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to='/login'>Connexion</Link>
+                </li>
+                <li>
+                  <Link to='/register'>Inscription</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className='toggle'>

@@ -1,3 +1,4 @@
+// Pages.jsx
 import React from "react";
 import Header from "../common/header/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -8,11 +9,13 @@ import Blog from "../blog/Blog";
 import Contact from "../contact/Contact";
 import Hebergement from "../hebergement/hebergement";
 import Admin from '../admin/Admin';
-import Login from '../auth/Login'; // Ajout de la ligne pour la page de connexion
-import Register from '../auth/Register'; // Ajout de la ligne pour la page d'inscription
+import Login from '../auth/Login';
+import Register from '../auth/Register';
+import { AuthProvider } from '../auth/AuthContext'; // Importez le contexte d'authentification
+
 const Pages = () => {
   return (
-    <>
+    <AuthProvider> {/* Ajoutez AuthProvider autour de votre Router */}
       <Router>
         <Header />
         <Switch>
@@ -22,12 +25,12 @@ const Pages = () => {
           <Route exact path='/blog' component={Blog} />
           <Route exact path='/contact' component={Contact} />
           <Route path='/admin' component={Admin} />
-          <Route path='/login' component={Login} /> {/* Ajout de la route pour la page de connexion */}
-          <Route path='/register' component={Register} /> {/* Ajout de la route pour la page d'inscription */}
+          <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
         </Switch>
         <Footer />
       </Router>
-    </>
+    </AuthProvider>
   );
 }
 
