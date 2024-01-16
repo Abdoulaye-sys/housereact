@@ -10,7 +10,6 @@ import Hebergement from "../hebergement/hebergement";
 import Admin from '../admin/Admin';
 import Login from '../auth/Login'; // Ajout de la ligne pour la page de connexion
 import Register from '../auth/Register'; // Ajout de la ligne pour la page d'inscription
-
 const Pages = () => {
   return (
     <>

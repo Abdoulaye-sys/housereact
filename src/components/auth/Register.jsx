@@ -44,28 +44,34 @@ const Register = () => {
         <input
           type='text'
           name='username'
+          id='username'
           placeholder='Nom dutilisateur'
           value={formData.username}
           onChange={handleChange}
+          autoComplete='username'
         />
         <input
           type='email'
           name='email'
+          id='email'
           placeholder='E-mail'
           value={formData.email}
           onChange={handleChange}
+          autoComplete='email'
         />
         <input
           type='password'
           name='password'
+          id='password'
           placeholder='Mot de passe'
           value={formData.password}
           onChange={handleChange}
+          autoComplete='new-password'
         />
-        <button type='submit' style={{ marginTop: '10px' }}>S'inscrire</button>
+        <button type='submit'>S'inscrire</button>
       </form>
     </div>
   );
-};
+  };
 
 export default Register;

@@ -11,7 +11,8 @@ const Hebergement = () => {
   useEffect(() => {
     const fetchLogements = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/logements?page=1');
+        const response = await axios.get('http://127.0.0.1:8000/api/logements');
+        console.log('Réponse de l\'API:', response.data); // Ajoutez cette ligne
         setLogements(response.data['hydra:member']);
       } catch (error) {
         console.error('Une erreur s\'est produite lors de la récupération des logements', error);
@@ -19,6 +20,7 @@ const Hebergement = () => {
         setLogements([]);
       }
     };
+    
 
     fetchLogements();
   }, []);
